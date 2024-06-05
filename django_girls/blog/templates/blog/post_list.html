@@ -19,5 +19,15 @@
             <h2><a href="">Juja chickens</a></h2>
             <p>Heard they have descpicable food! Going to try it out.</p>
         </article>
+
+            <h2> Here are popular articles from the team! </h2>
+            {%for post in posts%}
+                <article>
+                    <h3>{{post.title}}</h3>
+                    <p> {{post.text | linebreaksbr}} </p>
+                    <time> {{post.published_date}} </time>
+                <article>
+            {% endfor %}
+
     </body>
 </html>
