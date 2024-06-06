@@ -1,33 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>HOME PAGE</title>
-    </head>
-    <body>
-        <header>
-            <h1><a href="/">RESTRAUNT REVIEWS</a></h1>
-        </header>
+{% extends 'blog/base.html' %}
 
-        <article>
-            <time>published: 14.06.2014, 12:14</time>
-            <h2><a href="">Mike's Fish joint</a></h2>
-            <p>New restraunt opened in town!</p>
-        </article>
-
-        <article>
-            <time>published: 14.06.2014, 12:14</time>
-            <h2><a href="">Juja chickens</a></h2>
-            <p>Heard they have descpicable food! Going to try it out.</p>
-        </article>
-
-            <h2> Here are popular articles from the team! </h2>
-            {%for post in posts%}
-                <article>
-                    <h3>{{post.title}}</h3>
-                    <p> {{post.text | linebreaksbr}} </p>
-                    <time> {{post.published_date}} </time>
-                <article>
-            {% endfor %}
-
-    </body>
-</html>
+{%block content%}
+{%for post in posts%}
+    <article class = "blog-post">
+        <h3 class = "blog-title"><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h3>
+        <p class = "blog-text"> {{post.text | linebreaksbr}} </p>
+        <time class = "blog-published_date"> {{post.published_date}} </time>
+    <article>
+{% endfor %}
+{%endblock%}
